@@ -16,12 +16,11 @@ import {
   Award,
   Smartphone
 } from 'lucide-react';
-// FIX: SkillTypes object is now imported from constants
+// FIX: Removed the unused import of 'SkillType' from './types.ts'
 import { PERSONAL_INFO, SKILLS, EXPERIENCE, EDUCATION, PROJECTS, SKILL_ICONS, SkillTypes } from './constants';
 import { SectionWrapper } from './components/SectionWrapper';
 import { Card } from './components/Card';
-// REMOVED: import of SkillType is no longer needed here
-import profileImage from './assets/ProfileImage.jpeg';
+import profileImage from './assets/profileImage.jpeg'; 
 
 const App: React.FC = () => {
   
@@ -50,7 +49,7 @@ const App: React.FC = () => {
           className="mb-8 relative"
         >
           <div className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden border-8 border-white/50 shadow-2xl relative z-10 mx-auto bg-slate-200">
-            {/* Using a placeholder as the real image is inside a PDF */}
+            {/* FIX: Use imported profile image */}
             <img 
               src={profileImage} 
               alt={PERSONAL_INFO.name} 
@@ -131,7 +130,6 @@ const App: React.FC = () => {
                  Technical Skills
                </h3>
                <div className="grid grid-cols-1 gap-3">
-                 {/* FIX: Use SkillTypes object properties */}
                  {SKILLS.filter(s => s.type === SkillTypes.TECHNICAL || s.type === SkillTypes.NON_TECHNICAL).map((skill, index) => (
                    <Card key={index} className="!p-4 flex items-center gap-4 group hover:bg-white/70 transition-colors" hoverEffect={true}>
                      <div className="p-2.5 rounded-xl bg-slate-100 text-slate-600 border border-slate-200 group-hover:text-slate-900 group-hover:border-slate-300 transition-colors">
@@ -163,7 +161,6 @@ const App: React.FC = () => {
                  Professional Attributes
                </h3>
                <div className="flex flex-wrap gap-3 content-start">
-                 {/* FIX: Use SkillTypes object properties */}
                  {SKILLS.filter(s => s.type === SkillTypes.SOFT).map((skill, index) => (
                    <motion.div 
                     key={index} 
@@ -182,7 +179,7 @@ const App: React.FC = () => {
         {/* Experience Section */}
         <SectionWrapper title="Work History">
           <div className="relative border-l-2 border-slate-300 ml-3 md:ml-6 space-y-12 py-2">
-            {EXPERIENCE.map((exp, index) => (
+            {EXPERIENCE.map((exp, _) => (
               <div key={exp.id} className="relative pl-8 md:pl-12 group">
                 {/* Timeline Dot */}
                 <div className="absolute -left-[9px] top-6 w-[18px] h-[18px] rounded-full bg-white border-4 border-slate-400 group-hover:border-slate-800 group-hover:scale-110 transition-all duration-300 z-20 shadow-md"></div>
@@ -222,7 +219,7 @@ const App: React.FC = () => {
         {/* Education Section */}
         <SectionWrapper title="Education">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {EDUCATION.map((edu, index) => (
+            {EDUCATION.map((edu, _) => (
               <Card key={edu.id} className="relative flex flex-col h-full group">
                 <div className="flex justify-between items-start mb-4">
                   <div className="p-3 bg-white/50 border border-white/60 rounded-lg text-slate-700 group-hover:scale-110 transition-transform duration-300 shadow-sm">
@@ -306,3 +303,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+// --- END OF FILE App.tsx ---

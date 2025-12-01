@@ -1,6 +1,6 @@
 // --- START OF FILE constants.tsx ---
 
-import type { Experience, Education, Project, Skill, SkillType } from './types.ts';
+import type { Experience, Education, Project, Skill } from './types.ts';
 import { 
   Code, 
   Database, 
@@ -13,14 +13,13 @@ import {
   FileText
 } from 'lucide-react';
 
-// FIX: Replaced enum with a const object for modern bundling/module compatibility
+// FIX: SkillTypes object for runtime use
 export const SkillTypes = {
   TECHNICAL: 'Technical',
   SOFT: 'Soft Skills',
   NON_TECHNICAL: 'Non-Technical',
 } as const;
 
-// Helper type to correctly annotate the Skill objects
 type SkillTypeValue = typeof SkillTypes[keyof typeof SkillTypes];
 
 export const PERSONAL_INFO = {
@@ -36,8 +35,8 @@ export const SKILLS: Skill[] = [
   // Technical
   { name: "React Native", type: SkillTypes.TECHNICAL as SkillTypeValue, level: 85 },
   { name: "Java", type: SkillTypes.TECHNICAL as SkillTypeValue, level: 70 },
-  { name: "MongoDB", type: SkillTypes.TECHNICAL as SkillTypeValue, level: 75 },
-  { name: "XML Processing", type: SkillTypes.TECHNICAL as SkillTypeValue, level: 90 },
+  { name: "SpringBoot", type: SkillTypes.TECHNICAL as SkillTypeValue, level: 75 },
+  { name: "Oracle SQL", type: SkillTypes.TECHNICAL as SkillTypeValue, level: 80 },
   // Non Technical
   { name: "Microsoft Excel", type: SkillTypes.NON_TECHNICAL as SkillTypeValue, level: 95 },
   { name: "Microsoft Word", type: SkillTypes.NON_TECHNICAL as SkillTypeValue, level: 90 },
